@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.js'></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Events</title>
+</head>
+<body>
+    <nav>
+        <ul>
+          <img src="IMAGES/382542086_1020879715999889_8481635695016123165_n.png">
+          <li><a class="nav-link" href="index.html">BARANGAY UPDATES</a></li>
+          <li class="dropdown">
+            <a class="nav-link" id="entertainment-link">ENTERTAINMENT</a>
+            <div class="dropdown-content">
+              <a href="games.html">GAMES</a>
+              <a href="events.html">EVENTS</a>
+              <a href="travelguide.html">TRAVEL GUIDE</a>
+            </div>
+          </li>
+          <li><a class="nav-link" href="medicalassistance.html">MEDICAL ASSISTANCE</a></li>
+          <li><a class="nav-link" href="helpdesk.html">HELPDESK</a></li>
+        </ul>
+      </nav>
+      <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        #calendar-container {
+            width: 60%;
+            padding-top: 10%;
+        }
+
+        #event-list-container {
+            width: 40%;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        #event-list {
+            max-height: 300px;
+            overflow-y: scroll;
+        }
+    </style>
+    <div class="page-content">
+      <div class="container">
+          <!-- Calendar Container -->
+          <div id="calendar-container">
+              <div id="calendar"></div>
+          </div>
+  
+          <!-- Event List -->
+          <div id="event-list-container">
+              <h2>Event List</h2>
+              <ul id="event-list">
+                  <!-- Event items will be dynamically added here using JavaScript -->
+              </ul>
+          </div>
+      </div>
+  
+      <script>
+          document.addEventListener('DOMContentLoaded', function() {
+              var calendarEl = document.getElementById('calendar');
+              var calendar = new FullCalendar.Calendar(calendarEl, {
+                  initialView: 'dayGridMonth',
+                  events: [], // Initialize with an empty array
+  
+                  eventClick: function(info) {
+                      if (confirm('Delete this event?')) {
+                          info.event.remove();
+                      }
+                  },
+                  dateClick: function(info) {
+                      var eventTitle = prompt('Enter event title:');
+                      if (eventTitle) {
+                          var event = calendar.addEvent({ title: eventTitle, date: info.dateStr });
+                          addToEventList(event);
+                      }
+                  }
+              });
+              calendar.render();
+  
+              function addToEventList(event) {
+                  var eventList = document.getElementById('event-list');
+                  var eventItem = document.createElement('li');
+                  eventItem.textContent = event.title + ' - ' + event.start.toDateString();
+                  eventItem.onclick = function() {
+                      if (confirm('Delete this event?')) {
+                          event.remove();
+                          eventItem.remove();
+                      }
+                  };
+                  eventList.appendChild(eventItem);
+              }
+          });
+      </script>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

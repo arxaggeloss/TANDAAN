@@ -1,0 +1,139 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="styles.css">
+      <title>Helpdesk</title>
+  </head>
+  <body>
+    <style>
+ /* Style the form container */
+.contact-container {
+    max-width: 600px;
+    margin: 100px auto;
+    padding: 50px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Style labels and inputs */
+label, input, textarea {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+    resize: none;
+}
+
+input, textarea {
+    padding: 10px;
+}
+
+/* Style the submit button */
+button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Style for error messages */
+.error {
+    color: red;
+}
+    </style>
+      <nav>
+          <ul>
+            <img src="IMAGES/382542086_1020879715999889_8481635695016123165_n.png">
+            <li><a class="nav-link" href="index.html">BARANGAY UPDATES</a></li>
+            <li class="dropdown">
+              <a class="nav-link" id="entertainment-link">ENTERTAINMENT</a>
+              <div class="dropdown-content">
+                <a href="games.html">GAMES</a>
+                <a href="events.html">EVENTS</a>
+                <a href="travelguide.html">TRAVEL GUIDE</a>
+              </div>
+            </li>
+            <li><a class="nav-link" href="medicalassistance.html">MEDICAL ASSISTANCE</a></li>
+            <li><a class="nav-link" href="helpdesk.html">HELPDESK</a></li>
+          </ul>
+        </nav>
+
+      <div class="page-content">
+        <div class="contact-container">
+          <h1>Helpdesk</h1><br>
+          <p>Have questions or feedback? Please feel free to reach out to us.</p><br>
+  
+          <form id="contact-form">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required>
+  
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required>
+  
+              <label for="message">Message:</label>
+              <textarea id="message" name="message" rows="4" required></textarea>
+  
+              <button type="submit">Submit</button>
+          </form>
+      </div>
+      </div>
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("contact-form");
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        // Reset any previous error messages
+        const errorMessages = document.querySelectorAll(".error");
+        errorMessages.forEach(msg => msg.remove());
+
+        // Get form fields
+        const name = form.querySelector("#name").value;
+        const email = form.querySelector("#email").value;
+        const message = form.querySelector("#message").value;
+
+        // Basic validation
+        if (!name) {
+            showError("Name is required.");
+        }
+
+        if (!email) {
+            showError("Email is required.");
+        } else if (!validateEmail(email)) {
+            showError("Invalid email format.");
+        }
+
+        if (!message) {
+            showError("Message is required.");
+        }
+
+        if (name && email && message) {
+            alert("Form submitted successfully!");
+            form.reset();
+        }
+    });
+
+    function showError(message) {
+        const errorMessage = document.createElement("p");
+        errorMessage.className = "error";
+        errorMessage.textContent = message;
+        form.appendChild(errorMessage);
+    }
+
+    function validateEmail(email) {
+        // Simple email validation regex
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+    }
+});
+
+      </script>
+      <script src="script.js"></script>
+  </body>
+  </html>

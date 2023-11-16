@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Medical Assistance</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <img src="IMAGES/382542086_1020879715999889_8481635695016123165_n.png">
+            <li><a class="nav-link" href="index.html">BARANGAY UPDATES</a></li>
+            <li class="dropdown">
+                <a class="nav-link" id="entertainment-link">ENTERTAINMENT</a>
+                <div class="dropdown-content">
+                    <a href="games.html">GAMES</a>
+                    <a href="events.html">EVENTS</a>
+                    <a href="travelguide.html">TRAVEL GUIDE</a>
+                </div>
+            </li>
+            <li><a class="nav-link" href="medicalassistance.html">MEDICAL ASSISTANCE</a></li>
+            <li><a class="nav-link" href="helpdesk.html">HELPDESK</a></li>
+        </ul>
+    </nav>
+
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 0 200px; /* Add margin to the left and right sides */
+        }
+
+        .hotlines, .doctors, .medical-form {
+            flex: 1;
+            margin: 0 20px;
+        }
+
+        .hotlines h2, .doctors h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .hotlines ul, .doctors .expertise-dropdown, .doctors .doctor-list, .doctor-info, .medical-form form {
+            list-style: none;
+            padding: 0;
+        }
+
+        .hotlines li, .doctors .expertise-dropdown select, .doctors .doctor-list select, .medical-form label, .medical-form input, .medical-form textarea, .medical-form select {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #555;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Style for telephone icons using FontAwesome */
+        .hotlines li::before {
+            content: "\260E"; /* Telephone icon HTML entity */
+            color: #000000; /* Color for the telephone icon */
+            margin-right: 10px;
+        }
+
+        .expertise-dropdown select, .doctor-list select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #doctor-info {
+            display: flex;
+            align-items: center;
+        }
+
+        #doctor-info img {
+            width: 100px;
+            height: 100px;
+            margin-right: 10px;
+        }
+
+    .medical-form {
+        background-color: #f4f4f4;
+        padding: 100px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .medical-form h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .medical-form label {
+        display: block;
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #555;
+    }
+
+    .medical-form input[type="text"],
+    .medical-form input[type="email"],
+    .medical-form select,
+    .medical-form textarea {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+
+    .medical-form button {
+        background-color: #007BFF;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+    #medical-condition {
+    resize: none; /* Prevents resizing */
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+    .medical-form button:hover {
+        background-color: #0056b3;
+    }
+    .appointment-options {
+    display: flex;
+    flex-direction: row;
+}
+ </style>
+
+    <div class="page-content">
+        <div class="container">
+            <div class="hotlines">
+                <h2>Emergency Hotlines</h2>
+                <ul>  
+                    <li>Barangay Hotline: 123-456-7890</li>
+                    <li>Hospital Hotline: 987-654-3210</li>
+                    <li>Ambulance Hotline: 111-222-3333</li>
+                    <li>Fire Department: 444-555-6666</li>
+                    <li>Police: 777-888-9999</li>
+                </ul>
+            </div>
+            <div class="doctors">
+                <h2>List of Doctors</h2>
+                <div class="expertise-dropdown">
+                    <select id="expertise-select">
+                        <option value="expertise1">Expertise 1</option>
+                        <option value="expertise2">Expertise 2</option>
+                        <!-- Add more expertise options as needed -->
+                    </select>
+                </div>
+                <div class="doctor-list">
+                    <h3>Doctors</h3>
+                    <select id="doctor-select">
+                        <!-- Doctors for Expertise 1 -->
+                        <option value="doctor1">Dr. John Doe (Active)</option>
+                        <option value="doctor2">Dr. Jane Smith (Absent)</option>
+                        <!-- Doctors for Expertise 2 -->
+                        <option value="doctor3">Dr. Sarah Johnson (Active)</option>
+                        <option value="doctor4">Dr. Michael Wilson (Absent)</option>
+                        <!-- Add more doctors as needed -->
+                    </select>
+                    <div id="doctor-info">
+                        <!-- Doctor information and image will be displayed here -->
+                    </div>
+                </div>
+            </div>
+            <div class="medical-form">
+                <h2>Medical Assistance Form</h2>
+                <form>
+                    <label for="patient-name">Patient Name</label>
+                    <input type="text" id="patient-name" name="patient-name" required>
+
+                    <label for="contact-number">Contact Number</label>
+                    <input type="text" id="contact-number" name="contact-number" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" required>
+            
+                    <label for="sex-gender">Sex/Gender</label>
+                    <input type="text" id="sex-gender" name="sex-gender" required>
+            
+                    <label for="age">Age</label>
+                    <input type="text" id="age" name="age" required>
+                    
+                    <label for="appointment">Do you have an appointment?</label>
+            
+                    <div class="appointment-options">
+                    <input type="checkbox" name="appointment" value="Yes" id="yesCheckbox"> Yes
+                    <input type="checkbox" name="appointment" value="No" id="noCheckbox"> No
+                    </div>
+
+                    <label for="medical-condition">Medical Condition</label>
+                    <textarea id="medical-condition" name="medical-condition" required></textarea>
+
+                    <label for="doctor-preference">Doctor Preference</label>
+                    <select id="doctor-preference" name="doctor-preference">
+                        <option value="any">Any</option>
+                        <option value="doctor1">Dr. John Doe</option>
+                        <option value="doctor3">Dr. Sarah Johnson</option>
+                        <!-- Add more doctor options as needed -->
+                    </select>
+
+                    <button type="submit">Submit Request</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+ // Define doctor information based on the selected expertise
+const doctorData = {
+    expertise1: [
+        {
+            name: "Dr. John Doe (Active)",
+            expertise: "Expertise 1",
+            image: "doctor1.jpg",
+            status: "Active",
+        },
+        {
+            name: "Dr. Jane Smith (Absent)",
+            expertise: "Expertise 1",
+            image: "doctor2.jpg",
+            status: "Absent",
+        },
+        // Add more doctors for Expertise 1
+    ],
+    expertise2: [
+        {
+            name: "Dr. Sarah Johnson (Active)",
+            expertise: "Expertise 2",
+            image: "doctor3.jpg",
+            status: "Active",
+        },
+        {
+            name: "Dr. Michael Wilson (Absent)",
+            expertise: "Expertise 2",
+            image: "doctor4.jpg",
+            status: "Absent",
+        },
+        // Add more doctors for Expertise 2
+    ],
+};
+
+// Function to populate the doctor dropdown based on expertise
+function populateDoctorDropdown(expertise) {
+    const doctorSelect = document.getElementById("doctor-select");
+
+    // Clear existing options
+    doctorSelect.innerHTML = '';
+
+    // Add doctors for the selected expertise with status included
+    doctorData[expertise].forEach(doctor => {
+        const option = document.createElement("option");
+        option.value = doctor.name;
+        option.text = doctor.name; // Name and status in one option
+        doctorSelect.appendChild(option);
+    });
+}
+
+// JavaScript for updating doctor information based on the selected expertise
+document.getElementById("expertise-select").addEventListener("change", function() {
+    const selectedExpertise = this.value;
+    populateDoctorDropdown(selectedExpertise);
+
+    // Clear doctor information when expertise changes
+    const doctorInfo = document.getElementById("doctor-info");
+    doctorInfo.innerHTML = '';
+});
+
+// JavaScript for updating doctor information based on the selected doctor
+document.getElementById("doctor-select").addEventListener("change", function() {
+    const selectedDoctor = this.value;
+    const selectedExpertise = document.getElementById("expertise-select").value;
+    const doctorInfo = document.getElementById("doctor-info");
+
+    // Find the selected doctor in the data
+    const doctor = doctorData[selectedExpertise].find(d => d.name === selectedDoctor);
+
+    // Update doctor information in the HTML, including the status
+    doctorInfo.innerHTML = `
+        <img src="${doctor.image}" alt="${doctor.name}">
+        <p><strong>Name:</strong> ${doctor.name.split(" (")[0]}</p>
+        <p><strong>Status:</strong> ${doctor.status}</p>
+        <p><strong>Expertise:</strong> ${doctor.expertise}</p>
+    `;
+});
+const checkboxes = document.querySelectorAll("input[type='checkbox']");
+
+checkboxes.forEach(checkbox => {
+    checkbox.addEventListener("change", function() {
+        checkboxes.forEach(cb => {
+            if (cb !== this) {
+                cb.checked = false;
+            }
+        });
+    });
+});
+
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
